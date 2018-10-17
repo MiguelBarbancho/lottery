@@ -1,0 +1,155 @@
+<div class="container" style="text-align:center">
+  <div class="row">
+
+    <div class="col-6">
+
+      <div class="row">
+
+        <div class="col-12">
+          <h2 *ngIf="!endGame">NUMBERS</h2>
+          <h2 *ngIf="endGame">RESULT</h2>
+        </div>
+
+      </div>
+
+      <div class="row" *ngIf="endGame">
+        <div class="col-12">
+            <span class="green" *ngIf="win" >{{result}}</span>
+            <span class="red" *ngIf="!win" >{{result}}</span>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-12">
+          <p *ngIf="win"> GANASTE {{prize}} $</p>
+          <p *ngIf="!win"> PERDISTE {{totalBet}} $</p>
+        </div>
+
+      </div>
+
+      <div class="row mt-5" *ngIf="!endGame">
+
+        <div class="col-1"></div>
+
+        <div class="col-1">
+          <button class="btn" (click)="getNumber(1)">1</button>
+        </div>
+        <div class="col-1">
+          <button class="btn" (click)="getNumber(2)">2</button>
+        </div>
+        <div class="col-1">
+          <button class="btn" (click)="getNumber(3)">3</button>
+        </div>
+        <div class="col-1">
+          <button class="btn" (click)="getNumber(4)">4</button>
+        </div>
+        <div class="col-1">
+          <button class="btn" (click)="getNumber(5)">5</button>
+        </div>
+        <div class="col-1">
+          <button class="btn" (click)="getNumber(6)">6</button>
+        </div>
+        <div class="col-1">
+          <button class="btn" (click)="getNumber(7)">7</button>
+        </div>
+        <div class="col-1">
+          <button class="btn" (click)="getNumber(8)">8</button>
+        </div>
+        <div class="col-1">
+          <button class="btn" (click)="getNumber(9)">9</button>
+        </div>
+        <div class="col-1">
+          <button class="btn" (click)="getNumber(10)">10</button>
+        </div>
+
+        <div class="col-1"></div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-12 mt-5">
+          <input type="button" onclick="location.href='http://localhost:4200';" value="Reset" />
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-6">
+      <div class="row" *ngIf="!result">
+        <div *ngFor="let number of numbers">
+
+          <div class="col-1" *ngIf="number === 1">
+            <span class="grey">1</span>
+          </div>
+          <div class="col-1" *ngIf="number === 2">
+            <span class="red">2</span>
+          </div>
+          <div class="col-1" *ngIf="number === 3">
+            <span class="blue">3</span>
+          </div>
+          <div class="col-1" *ngIf="number === 4">
+            <span class="green">4</span>
+          </div>
+          <div class="col-1" *ngIf="number === 5">
+            <span class="pink">5</span>
+          </div>
+          <div class="col-1" *ngIf="number === 6">
+            <span class="yellow">6</span>
+          </div>
+          <div class="col-1" *ngIf="number === 7">
+            <span class="purple">7</span>
+          </div>
+          <div class="col-1" *ngIf="number === 8">
+            <span class="blue2">8</span>
+          </div>
+          <div class="col-1" *ngIf="number === 9">
+            <span class="orange">9</span>
+          </div>
+          <div class="col-1" *ngIf="number === 10">
+            <span class="green2">10</span>
+          </div>
+
+        </div>
+        <div class="row" *ngIf="result">
+          <div>
+
+            <div class="col-1" *ngIf="number === 1">
+              <p>1</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      &nbsp;
+
+      <div class="row">
+
+        <div class="col-12">
+          <p>X {{countbet}} Number of Bets</p>
+          <p *ngIf="!result">Min bet 5$</p>
+          <input type="number" [ngModel]="bet" (ngModelChange)="getBet($event)" *ngIf="!result">
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-12">
+          <p>Total Bet: {{totalBet}} $</p>
+        </div>
+
+      </div>
+
+      <div class="row" *ngIf="!result">
+
+        <div class="col-12">
+          <button class="btn btn-dark" (click)="goBet()">Place bet</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
